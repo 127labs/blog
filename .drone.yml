@@ -3,10 +3,8 @@ pipeline:
     image: golang
     commands:
       - go get github.com/spf13/hugo
-      - echo $PWD
-      - hugo -t after-dark
       - hugo version
-      - ls -la
+      - hugo -t after-dark
   publish:
     image: node
     environment:
