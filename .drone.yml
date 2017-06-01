@@ -5,5 +5,14 @@ pipeline:
       - go get github.com/spf13/hugo
       - echo $PWD
       - hugo -t after-dark
+      - hugo version
       - ls -la
-
+  publish:
+    image: node
+    environment:
+      - SURGE_LOGIN=${SURGE_LOGIN}
+      - SURGE_TOKEN=${SURGE_TOKEN}
+    commands:
+      - npm install surge
+      - ./node_modules/.bin/surge --version
+      - ./node_modules/.bin/surge --project ./public --domain blog.127labs.com
