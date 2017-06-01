@@ -1,3 +1,4 @@
+branches: [master]
 pipeline:
   build:
     image: golang
