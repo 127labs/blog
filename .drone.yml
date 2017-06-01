@@ -1,6 +1,17 @@
+branches: [master]
 pipeline:
   build:
     image: golang
     commands:
-      - go get -v github.com/spf13/hugo
-
+      - go get github.com/spf13/hugo
+      - hugo version
+      - hugo -t after-dark
+  publish:
+    image: node
+    environment:
+      - SURGE_LOGIN=${SURGE_LOGIN}
+      - SURGE_TOKEN=${SURGE_TOKEN}
+    commands:
+      - npm install surge
+      - ./node_modules/.bin/surge --version
+      - ./node_modules/.bin/surge --project ./public --domain blog.127labs.com
