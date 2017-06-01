@@ -2,5 +2,7 @@ pipeline:
   build:
     image: golang
     commands:
-      - go get -v github.com/spf13/hugo
+      - go get github.com/spf13/hugo
+      - echo $PWD
+      - hugo -t after-dark
 
