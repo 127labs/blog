@@ -5,4 +5,5 @@ pipeline:
       - go get github.com/spf13/hugo
       - echo $PWD
       - hugo -t after-dark
+      - ls -la
 
