@@ -8,10 +8,8 @@ pipeline:
       - hugo -t after-dark
   publish:
     image: node
-    environment:
-      - SURGE_LOGIN=${SURGE_LOGIN}
-      - SURGE_TOKEN=${SURGE_TOKEN}
     commands:
       - npm install surge
       - ./node_modules/.bin/surge --version
       - ./node_modules/.bin/surge --project ./public --domain blog.127labs.com
+    secrets: [surge_login, surge_password]
